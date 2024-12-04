@@ -18,15 +18,28 @@ export class AccessBuildingLogsComponent  implements OnInit {
 
   accessRecords : AccessRecord[] = [];
 
+  message = "";
+  messageClass = "alert alert-info";
+
   updateData(buildingName : string) {
-    this.dataService.whoIsInTheBuilding(buildingName).subscribe( data => 
-      {
-        const map = new Map<string, AccessRecord>();
-        data.forEach(record => {
-          map.set(record.user, record);
-        })
-        this.accessRecords = Array.from(map.values()).filter(r => r.status = true)
-      } );
+    this.message = "Please wait...";
+    this.dataService.whoIsInTheBuilding(buildingName).subscribe( 
+      { next :data => 
+        {
+          const map = new Map<string, AccessRecord>();
+          data.forEach(record => {
+            map.set(record.user, record);
+          })
+          this.accessRecords = Array.from(map.values()).filter(r => r.status = true)
+          this.message = "";
+        } ,
+        error : error => {console.log("Error:", error);
+          this.message = "Something went wrong";
+          this.messageClass = "alert alert-danger"
+        },
+
+        
+      });
   }
 
   ngOnInit(): void {

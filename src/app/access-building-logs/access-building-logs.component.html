@@ -2,6 +2,7 @@
 There are {{accessRecords.length}} users
 
 <app-building-selector></app-building-selector>
+<div *ngIf="message.length > 0" [class]="messageClass">{{message}}</div>
 <ng-content *ngIf="accessRecords.length > 0">
 <table class="table">
     <thead>

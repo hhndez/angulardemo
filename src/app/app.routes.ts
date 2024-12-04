@@ -5,6 +5,7 @@ import { AccessBuildingLogsComponent } from './access-building-logs/access-build
 import { AccessRecordComponent } from './access-record/access-record.component';
 import { PACKAGE_ROOT_URL } from '@angular/core';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
     {
@@ -21,6 +22,9 @@ export const routes: Routes = [
     },
     {
         path: "access", component: AccessRecordComponent
+    }, 
+    {
+        path: "login", component: LoginComponent
     }, 
     {
         path: "**", component: PageNotFoundComponent

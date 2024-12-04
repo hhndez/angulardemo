@@ -32,4 +32,32 @@ describe('UserSortComponent', () => {
 
 
   });
+
+  it('Test handleClick is called', () => {
+    spyOn(component, 'handleClick').and.callThrough();
+
+    const button: HTMLElement = fixture.debugElement.query(x => x.nativeElement.textContent === "Sort by First name").nativeElement;
+    button.click();
+
+    expect(component.handleClick).toHaveBeenCalled();
+  });
+
+  it('Test call demoFunction', () => {
+    spyOn(component, 'demoFunction').and.callThrough();
+
+    const button: HTMLElement = fixture.debugElement.query(x => x.nativeElement.textContent === "Sort by First name").nativeElement;
+    button.click();
+
+    expect(component.demoFunction).toHaveBeenCalledWith(2);
+  })
+
+  it('Test call demoFunction and return string', () => {
+    const spy = spyOn(component, 'demoFunction').and.callThrough();
+
+    const button: HTMLElement = fixture.debugElement.query(x => x.nativeElement.textContent === "Sort by First name").nativeElement;
+    button.click();
+
+    const returnValue : string = spy.calls.mostRecent().returnValue;
+    expect("Sort by 2").toEqual(returnValue);
+  })
 });

@@ -21,6 +21,11 @@ export class UserSortComponent {
     this.sortEvent.emit(sortType);
     this.sortType = sortType;
     this.router.navigate(["users"], { queryParams: { sortType : sortType } });
+    this.demoFunction(sortType);
+  }
+
+  demoFunction(softNumber: number) : string {
+    return `Sort by ${softNumber}`
   }
 
 }

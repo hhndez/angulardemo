@@ -20,4 +20,16 @@ describe('UserSortComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('first name sort should change the value of sortType to 2', () => {
+  //clieck button
+    const button: HTMLElement = fixture.debugElement.query(x => x.nativeElement.textContent === "Sort by First name").nativeElement;
+    button.click();
+    //wait
+    fixture.detectChanges();
+    //expect sortType = 2
+    expect(component.sortType).toEqual(2);
+
+
+  });
 });

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccessRecordComponent } from './access-record.component';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('AccessRecordComponent', () => {
   let component: AccessRecordComponent;
@@ -8,7 +9,8 @@ describe('AccessRecordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AccessRecordComponent]
+      imports: [AccessRecordComponent],
+      providers: [provideHttpClient()]
     })
     .compileComponents();
 

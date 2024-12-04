@@ -18,7 +18,10 @@ export class BuildingSelectorComponent implements OnInit {
   constructor(private dataService : DataService, private route: ActivatedRoute, private router : Router) {}
 
   ngOnInit(): void {
-      this.dataService.getBuildings().subscribe(data => this.buildings = data);
+      this.buildings = JSON.parse(localStorage.getItem("buildings") || "[]");
+      if (this.buildings.length === 0) {
+        this.getDataFromServer();
+      }
       this.route.params.subscribe(params => this.currentBuilding = params['building']);
   }
 
@@ -26,6 +29,13 @@ export class BuildingSelectorComponent implements OnInit {
     console.log("Onchange", event.target);
     const building = (event.target as HTMLSelectElement).value;
      this.router.navigate(["emergency", building]);
+  }
+
+  getDataFromServer() {
+    this.dataService.getBuildings().subscribe(data => {
+      this.buildings = data;
+      localStorage.setItem("buildings", JSON.stringify(data));
+    });
   }
 
 }

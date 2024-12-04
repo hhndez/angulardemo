@@ -17,6 +17,9 @@ export const routes: Routes = [
         path: "emergency", component: AccessBuildingLogsComponent
     },
     {
+        path: "emergency/:building", component: AccessBuildingLogsComponent
+    },
+    {
         path: "access", component: AccessRecordComponent
     }, 
     {

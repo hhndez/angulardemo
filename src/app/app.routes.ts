@@ -6,6 +6,7 @@ import { AccessRecordComponent } from './access-record/access-record.component';
 import { PACKAGE_ROOT_URL } from '@angular/core';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 export const routes: Routes = [
     {
@@ -14,6 +15,9 @@ export const routes: Routes = [
     {
         path: "users", component: UserPageComponent
     }, 
+    {
+        path: "users/:id", component: UserEditComponent
+    },
     {
         path: "emergency", component: AccessBuildingLogsComponent
     },

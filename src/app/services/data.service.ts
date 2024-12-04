@@ -50,6 +50,9 @@ export class DataService {
     return this.httpClient.get<Building[]>(`${this.serverUrl}/api/building`);
   }
 
+  getUser(id : number): Observable<User> {
+    return this.httpClient.get<User>(`${this.serverUrl}/api/user/${id}`);
+  }
 
 }
 

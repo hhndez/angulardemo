@@ -17,7 +17,6 @@ export class AccessBuildingLogsComponent  implements OnInit {
   constructor(private dataService : DataService, private route: ActivatedRoute) {}
 
   accessRecords : AccessRecord[] = [];
-  //currentBuilding : string = "";
 
   updateData(buildingName : string) {
     this.dataService.whoIsInTheBuilding(buildingName).subscribe( data => 
@@ -28,17 +27,10 @@ export class AccessBuildingLogsComponent  implements OnInit {
         })
         this.accessRecords = Array.from(map.values()).filter(r => r.status = true)
       } );
-/*
-      this.route.params.subscribe(params => {
-        this.currentBuilding = params['building']
-        console.log("From building", this.currentBuilding);
-      });*/
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      //this.currentBuilding = params['building']
-      //console.log("From building", this.currentBuilding);
       this.updateData(params['building']);
     });
   }

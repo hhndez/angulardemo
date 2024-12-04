@@ -7,6 +7,7 @@ import { PACKAGE_ROOT_URL } from '@angular/core';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserBulkEditComponent } from './user-bulk-edit/user-bulk-edit.component';
 
 export const routes: Routes = [
     {
@@ -17,6 +18,9 @@ export const routes: Routes = [
     }, 
     {
         path: "users/:id", component: UserEditComponent
+    },
+    {
+        path: "users-edit", component: UserBulkEditComponent
     },
     {
         path: "emergency", component: AccessBuildingLogsComponent

@@ -1,25 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from '../services/data.service';
 import { ActivatedRoute } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-user-edit',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './user-edit.component.html',
   styleUrl: './user-edit.component.css'
 })
 export class UserEditComponent implements OnInit{
+  /*
   userForm = new FormGroup(
     {
       id : new FormControl(''),
       firstname : new FormControl(''),
       surname : new FormControl('')
     }
-  );
+  );*/
 
-  constructor(private dataService : DataService, private route: ActivatedRoute) {}
+
+  userForm! : FormGroup;
+
+
+  constructor(private dataService : DataService, private route: ActivatedRoute, private formBuilder : FormBuilder) {}
 
   handleSubmit() {
     console.log("data", this.userForm);
@@ -28,6 +34,13 @@ export class UserEditComponent implements OnInit{
   userId : number = 0;
 
   ngOnInit(): void {
+
+    this.userForm = this.formBuilder.group({
+      id: '',
+      firstname : ['',[Validators.required, Validators.minLength(4)]],
+      surname : ['',[Validators.required, Validators.minLength(4)]],
+    });
+    //this.userForm.controls['firstname'].valid
 
     this.route.params.subscribe(params => {
       console.log("GOT:", params['id']);

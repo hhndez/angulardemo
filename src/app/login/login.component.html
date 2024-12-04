@@ -3,12 +3,12 @@
     <h2 class="my-4">Log in</h2>
     
     <div data-mdb-input-init class="mb-4">
-      <input type="email" id="email" class="form-control" [(ngModel)]="loginData.email" name="email" />
+      <input type="email" id="email" class="form-control" [(ngModel)]="loginData.email" name="email" required/>
       <label class="form-label" for="email">Email address</label>
     </div>
 
     <div data-mdb-input-init class="mb-4">
-      <input type="password" id="password" class="form-control" [(ngModel)]="loginData.password" name="password"/>
+      <input type="password" id="password" class="form-control" [(ngModel)]="loginData.password" name="password" required/>
       <label class="form-label" for="password">Password</label>
     </div>
     

@@ -60,4 +60,16 @@ describe('UserSortComponent', () => {
     const returnValue : string = spy.calls.mostRecent().returnValue;
     expect("Sort by 2").toEqual(returnValue);
   })
+
+  it('test emitter', () => {
+    let result = -1;
+    component.sortEvent.subscribe(data => result = data);
+    
+    const button: HTMLElement = fixture.debugElement.query(x => x.nativeElement.textContent === "Sort by First name").nativeElement;
+    button.click();
+
+    
+    expect(result).toEqual(2);
+    
+  });
 });

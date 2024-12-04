@@ -3,11 +3,12 @@ import { DataService } from '../services/data.service';
 import { AccessRecord } from '../../model/AccessRecord';
 import { Observable } from 'rxjs';
 import { NgFor } from '@angular/common';
+import { BuildingSelectorComponent } from "../building-selector/building-selector.component";
 
 @Component({
   selector: 'app-access-building-logs',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, BuildingSelectorComponent],
   templateUrl: './access-building-logs.component.html',
   styleUrl: './access-building-logs.component.css'
 })
